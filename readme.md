@@ -1,12 +1,6 @@
 # Stiles
 
-![Actual output from a fluid grid with stiles](data:image/png;base64,iVBORw0KGgo
-AAAANSUhEUgAAASwAAAEsBAMAAACLU5NGAAAAMFBMVEUAAAD///8AAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAABbpYeVAAAA3ElEQVR42u3ZMREAMAwDMZdBy59sSWTIJXoEGrw5Kev
-cdAwLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCws
-LCwsLCwsLCwsLCwsLazvr1bWAZVtYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWMNYhd/kApZtYWFhYWF
-hYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWF
-hYWFhYWE1ZH04aie3F3++DQAAAABJRU5ErkJggg==)
+![logoish](docs/logoish.png?raw=true "Actual output from a fluid grid with stiles")
 
 ## Proportioned, responsive, tile grids for [Bootstrap 3](http://getbootstrap.com/) in SCSS
 
@@ -76,26 +70,7 @@ overhanging tiles, e.g.:
 
 This would render like so:
 
-![Render of example](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAeQAAAFDBAMAA
-AAZmWCcAAAAMFBMVEUFZwUBYwEeZgEBVQE4hzlkoWRQfxQAZAASfkcDaSNUrqCVq1SUvZPTzoS01sPf7
-eCf/johAAAD9klEQVR42u3dsWsUQRTH8Qkpts0UMp7FiZWtssrhFgEbLSXCNSIEq7QzHDLxn8hV6ST7J
-xwkiNhYWm2jAQt7Ww8XcyDnOqYRY/8TJ8x3/oBlPrw3M+9tMWOidmx+vqX9oPsWxFM0kCFDhgwZMmTIk
-CFDhgwZMmTIxZOdmGydlhxs7lGuoteSq2jFZFdJySEYcWJ7I47yVtMHJdk9SuugJLvd9MFKybOFlOz30
-3T52unI4fnwZHBOSLYHSUve7utxr4xy+3W22KuE5LB8q03s5ztmuxdGOR7e3xSTH2xrybOJbaVRnsXD4
-YYysWMca8l+Y3PxuhKS/dW0UtQ5f8hGTI6xGawyyn40TdLElkc52MUHpyTHWM/fx5zJ9uiHlZK3zHkiZ
-r2W7fJEWn25+UnVZh1l36y3TKWM8tEqLE5yXsu2TSmtlNXX1ZTW2oIzXjlWthXuZdd1x8pSxB12D8Wd1
-Gwi7aRmdV1PlIkdZrW6X/ba5tEbo13L51u2E5NL/BEEGTJkyJAhQ4YMGTJkyJAhQ4YMGTJkyJAhQ4YMG
-TJkyJAhQ4YMGTJkyJAhQ4YMGTJkyJAhQ4YMGTJkyJAhQ4YMGTJkyJAhQ4YMGTJkyJAhQ4YMGTJkMVk8/
-gFZPUVTi4ec/F09Q9OJx5ma/FM9wxLJBSZ2gdsX5zJkyJAhQ4YMGTJkyJAhQ4YM+W+yyZxsjOStjovMS
-ebkuq7FUXbTvMnhadftOSXZN0Pe5FFKSfue1MZ8cFmT99eSd3wukEfLvKPs76wUjzVdIPvmW97k0Jx1O
-9Ide2P+JnPyOKXhhpAcRsNoMFmvZfVzeOFaf2+YZE32VWyV7zxW8x9dehdyJs+8lzxS+JvsDpYprXzO5
-Jf3zbi3OvL5eDHcznr7ar/W81NpKRJeZH4uN8M0PVMWnMGOMq++7CJ9VDSSl6l59Caqm8fcfxFUUfK34
-CLZZU4ONsbCoiwakCFDhgwZMmTIkCFDhgwZMmTIkCFDhgwZMmTIkCFDhgwZMmTIkCFDhgz5b7L4Rp9LQ
-FZf3JQ/+Yv6ei7IJDbbF4cUZMiQIUOGDBkyZMiQIUOGDPn/k4PZKI3s6okrixz2u8ehLLLbTYo7MS4RO
-ewPN+enRZF9s5rc3SkrscenZnNSFNm2n9LaFkV2bZouT1xZ5FU97osih7Y3zSqURI7j4sjnh1R9vS9q+
-wqj9Gq5U9Raju4gnRVWY4couZHsUjWPNvpYGDlaVxxZMiBDhgwZMmTIkCFDhgwZMmTIkCFDhgwZMmTIk
-CFDhgwZMmTIkCFDhgwZMmTIkCFDhgwZMmTIkCFDhgwZMmTIkCFDhgwZMmTIkCFDhgwZMmTIkCFDhgwZc
-l7kX/H48P8P5ULVAAAAAElFTkSuQmCC)
+![example](docs/example.png?raw=true "Render of example (at half resolution)")
 
 Such grids *may* have an element order slightly off of visual reading order but
 they're pretty close. Use correctly, you can dynamically add tiles (preferably
