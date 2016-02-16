@@ -1,0 +1,149 @@
+/*! Stiles / Copyright 2015 Lucas Sandery / Licence: MIT (http://opensource.org/licenses/MIT) */
+
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+// 
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+// 
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+
+// Variables to override before @import.
+// Values are mostly derived in mixins so you don't need to explicitly reset
+// each and every one when making additional custom sizes. Setting any
+// overridden variables back to null will ensure their defaults are restored.
+
+$stiles-make-default: true !default;// set this to false if you're only going to call the mixins, manually.
+$stiles-gutter: null !default;
+$stiles-gutter-xs: null !default;
+$stiles-gutter-sm: null !default;
+$stiles-gutter-md: null !default;
+$stiles-gutter-lg: null !default;
+$stiles-cols: null !default;
+$stiles-cols-lg: null !default;
+$stiles-cols-md: null !default;
+$stiles-cols-sm: null !default;
+$stiles-cols-xs: null !default;
+$stiles-rows-ratio: null !default;
+$stiles-rows-xs: null !default;
+$stiles-rows-sm: null !default;
+$stiles-rows-md: null !default;
+$stiles-rows-lg: null !default;
+$stiles-aspect-ratio: null !default;
+$stiles-name: null !default;
+
+@mixin stiles-make-size($size: 'xs', $cols: $grid-columns, $rows: 2 * $grid-columns, $gutter: 0, $aspect: 1, $name: '') {
+	$nsize: if($name == '', $size, $size + '-' + $name);
+	$right: ceil(($gutter / 2));
+	$left: floor(($gutter / 2));
+	.stiles-#{$nsize} {
+		overflow: hidden;
+		> .row {
+			margin: (-$gutter) (floor(($grid-gutter-width / -2)) - $right) 0 (ceil(($grid-gutter-width / -2)) - $left);
+			padding-bottom: $gutter;
+			&:last-child {
+				padding-bottom: 0;
+			}
+		}
+		@if $cols != $grid-columns {
+			$grid-columns-orig: $grid-columns;
+			$grid-columns: $cols !global;
+			@include make-grid($size);
+			$grid-columns: $grid-columns-orig !global;
+		}
+	}
+	%stile-#{$nsize} {
+		min-height: 0;
+		clear: none;
+		> * {
+			display: block;
+			position: absolute;
+			top: $gutter;
+			right: $right;
+			bottom: 0;
+			left: $left;
+		}
+	}
+	@for $i from 1 through $rows {
+		.stile-#{$nsize}-#{$i} {
+			@extend %stile-#{$nsize};
+			padding: 0 0 percentage(($i / $cols / $aspect));
+		}
+	}
+	@for $i from 1 to $rows {
+		.stile-#{$nsize}-tuck-#{$i} {
+			margin-bottom: percentage((-$i / $cols / $aspect));
+		}
+	}
+	.stile-#{$nsize}-row {
+		clear: left;
+	}
+}
+
+@mixin stiles-make($aspect: null, $name: null, $gutter: null, $cols: null, $rows-ratio: null, $gutter-xs: null, $gutter-sm: null, $gutter-md: null, $gutter-lg: null, $cols-lg: null, $cols-md: null, $cols-sm: null, $cols-xs: null, $rows-xs: null, $rows-sm: null, $rows-md: null, $rows-lg: null) {
+
+	$aspect: $stiles-aspect-ratio !default;
+	$aspect: 1 !default;
+	
+	$name: $stiles-name !default;
+	$name: '' !default;
+	
+	$gutter: $stiles-gutter !default;
+	$gutter: 0 !default;
+	$gutter-xs: $stiles-gutter-xs !default;
+	$gutter-xs: $gutter !default;
+	$gutter-sm: $stiles-gutter-sm !default;
+	$gutter-sm: $gutter-xs !default;
+	$gutter-md: $stiles-gutter-md !default;
+	$gutter-md: $gutter-sm !default;
+	$gutter-lg: $stiles-gutter-lg !default;
+	$gutter-lg: $gutter-md !default;
+	
+	// inverse of standard inheritance for cols
+	$cols: $stiles-cols !default;
+	$cols: $grid-columns !default;
+	$cols-lg: $stiles-cols-lg !default;
+	$cols-lg: $cols !default;
+	$cols-md: $stiles-cols-md !default;
+	$cols-md: $cols-lg !default;
+	$cols-sm: $stiles-cols-sm !default;
+	$cols-sm: $cols-md !default;
+	$cols-xs: $stiles-cols-xs !default;
+	$cols-xs: $cols-sm !default;
+	
+	$rows-ratio: $stiles-rows-ratio !default;
+	$rows-ratio: 2 !default;
+	$rows-xs: $stiles-rows-xs !default;
+	$rows-xs: ceil($cols-xs * $rows-ratio) !default;
+	$rows-sm: $stiles-rows-sm !default;
+	$rows-sm: ceil($cols-sm * $rows-ratio) !default;
+	$rows-md: $stiles-rows-md !default;
+	$rows-md: ceil($cols-md * $rows-ratio) !default;
+	$rows-lg: $stiles-rows-lg !default;
+	$rows-lg: ceil($cols-lg * $rows-ratio) !default;
+	
+	@include stiles-make-size($cols: $cols-xs, $rows: $rows-xs, $gutter: $gutter-xs, $aspect: $aspect, $name: $name);
+	@media (min-width: $screen-sm-min) {
+		@include stiles-make-size($size: 'sm', $cols: $cols-sm, $rows: $rows-sm, $gutter: $gutter-sm, $aspect: $aspect, $name: $name);
+	}
+	@media (min-width: $screen-md-min) {
+		@include stiles-make-size($size: 'md', $cols: $cols-md, $rows: $rows-md, $gutter: $gutter-md, $aspect: $aspect, $name: $name);
+	}
+	@media (min-width: $screen-lg-min) {
+		@include stiles-make-size($size: 'lg', $cols: $cols-lg, $rows: $rows-lg, $gutter: $gutter-lg, $aspect: $aspect, $name: $name);
+	}
+}
+
+@if $stiles-make-default {
+	@include stiles-make;
+}
